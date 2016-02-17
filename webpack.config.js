@@ -21,9 +21,9 @@ module.exports = {
       loaders: ['babel-loader?stage=0&optional=runtime'],
       exclude: /node_modules/,
       include: path.join(__dirname, 'js')
+    }, {
+      test: /\.css?$/,
+      loader: 'style-loader!css-loader?sourceMap!autoprefixer-loader?{browsers:["last 3 version"]}'
     }]
-  },
-  resolve: {
-    extensions: ['', '.js']
   }
 };
