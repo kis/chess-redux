@@ -2,9 +2,6 @@ import React from 'react';
 
 import Figure from './Figure';
 
-var ChessActions = require('../actions/ChessActions');
-var ChessStore = require('../stores/ChessStore');
-
 class ChessField extends React.Component {
 	constructor(props) {
 		super(props);

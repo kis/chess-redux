@@ -1,16 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import Field from './components/Logic/Field';
-import ChessField from './components/ChessField';
-import Options from './components/Options';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
 
-//TODO
-const field = new Field();
+import chessApp from './reducers/reducers';
 
-ReactDOM.render(<ChessField field={field} />, document.getElementsByClassName('chess-area')[0]);
+let store = createStore(chessApp);
 
-let currentFigure = 'Black';
-
-ReactDOM.render(<Options currentFigure={currentFigure} />, document.getElementsByClassName('chess-options')[0]);
+ReactDOM.render(<Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementsByClassName('root')[0]);
 
