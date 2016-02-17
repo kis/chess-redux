@@ -6,6 +6,8 @@ import { Provider } from 'react-redux';
 
 import chessApp from './reducers/reducers';
 
+import App from './containers/App';
+
 let store = createStore(chessApp);
 
 ReactDOM.render(<Provider store={store}>

@@ -6,23 +6,9 @@ class ChessField extends React.Component {
 	constructor(props) {
 		super(props);
 
-		var field = ChessStore.initField();
-
-		this.props = {
-			letters: field.letters
-		};
-
 		this.state = {
-			data: field.data
+			data: this.props.field
 		};
-	}
-
-	componentDidMount() {
-		ChessStore.addChangeListener(this._onChange.bind(this));
-	}
-
-	componentWillUnmount() {
-		ChessStore.removeChangeListener(this._onChange.bind(this));
 	}
 
 	_onChange() {
@@ -49,7 +35,7 @@ class ChessField extends React.Component {
 	renderLettersLine() {
 		return <div className='letters-line'>
 			{this.renderLettersField()}
-			{this.props.field.letters.map((result, i) => {
+			{this.props.letters.map((result, i) => {
 				return this.renderLettersField(result, i)
 			})}
 		</div>
@@ -93,7 +79,7 @@ class ChessField extends React.Component {
 
 	render() {
 		return ( 
-			<div>
+			<div className="chess-area">
 				{this.renderLettersLine()}
 				{this.renderChessLines()}
 				{this.renderLettersLine()}

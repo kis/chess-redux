@@ -31,7 +31,7 @@ class Options extends React.Component {
 
 	render() {
 		return (
-			<div>
+			<div className="chess-options">
 				<div className="moving-style">{this.state.currentFigure} is moving</div>
 				<div className="button-style">
 					<button onClick={this.props.start}>Start</button>
