@@ -2,23 +2,23 @@ import React from 'react';
 
 import Figure from './Figure';
 
-class ChessField extends React.Component {
+export default class ChessField extends React.Component {
 	constructor(props) {
 		super(props);
 
 		this.state = {
-			data: this.props.field
+			data: this.props.field.data
 		};
 	}
 
-	_onChange() {
+	/*_onChange() {
 		setTimeout(() => {
 			this.setState({data: ChessStore.getField().data});
 		}, 100);
-	}
+	}*/
 
 	moveFigureToCell(data, oldPos, pos) {
-		ChessActions.moveFigureToCell({
+		this.props.actions.moveFigureToCell({
 			data: data,
 			oldPos: oldPos,
 			pos: pos
@@ -26,7 +26,7 @@ class ChessField extends React.Component {
 	}
 
 	repaintCell(data, oldPos) {
-		ChessActions.repaintCell({
+		this.props.actions.repaintCell({
 			data: data,
 			oldPos: oldPos
 		});
@@ -35,7 +35,7 @@ class ChessField extends React.Component {
 	renderLettersLine() {
 		return <div className='letters-line'>
 			{this.renderLettersField()}
-			{this.props.letters.map((result, i) => {
+			{this.props.field.letters.map((result, i) => {
 				return this.renderLettersField(result, i)
 			})}
 		</div>
@@ -57,13 +57,6 @@ class ChessField extends React.Component {
 		})
 	}
 
-	renderFigure(res, opts) {
-		return <Figure opts={res} 
-				field={this.props.field} 
-				moveFigureToCell={opts.moveFigure}
-				repaintCell={opts.repaintCell} />
-	}
-
 	renderChessCell(res, key) {
 		var cellClass = "chess-field " + res.class;
 
@@ -77,6 +70,13 @@ class ChessField extends React.Component {
 		</div>
 	}
 
+	renderFigure(res, opts) {
+		return <Figure opts={res} 
+				field={this.props.field} 
+				moveFigureToCell={opts.moveFigure}
+				repaintCell={opts.repaintCell} />
+	}
+
 	render() {
 		return ( 
 			<div className="chess-area">
@@ -87,5 +87,3 @@ class ChessField extends React.Component {
 		);
 	}
 }
-
-export default ChessField;

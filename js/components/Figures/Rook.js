@@ -1,7 +1,7 @@
 
 import Figure from '../Logic/Figure';
 
-class Rook extends Figure {
+export default class Rook extends Figure {
 
     constructor(opts) {
         super(opts);
@@ -28,5 +28,3 @@ class Rook extends Figure {
     }
 
 }
-
-export default Rook;

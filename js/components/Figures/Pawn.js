@@ -1,7 +1,7 @@
 
 import Figure from '../Logic/Figure';
 
-class Pawn extends Figure {
+export default class Pawn extends Figure {
 
     constructor(opts) {
         super(opts);
@@ -32,5 +32,3 @@ class Pawn extends Figure {
     }
 
 }
-
-export default Pawn;

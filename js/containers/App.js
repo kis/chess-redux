@@ -8,22 +8,19 @@ import Options from '../components/Options';
 
 class App extends Component {
   render() {
-    const { actions } = this.props.actions;
-    const { data, letters } = this.props.chess;
-    let currentFigure = 'Black';
-
     return (
       <div>
-        <ChessField field={data} letters={letters} actions={actions} />
-        <Options currentFigure={currentFigure} actions={actions} />
+        <ChessField field={this.props.field} actions={this.props.actions} />
+        <Options currentFigure='Black' actions={actions} />
       </div>
     )
   }
 }
 
 function mapStateToProps(state) {
+  console.log(state)
   return {
-    chess: state.chess
+    field: state.field
   }
 }
 

@@ -4,7 +4,7 @@ import Draggable, {DraggableCore} from 'react-draggable';
 
 const CellWidth = 90;
 
-class Figure extends React.Component {
+export default class Figure extends React.Component {
 	constructor(props) {
 		super(props);
 
@@ -30,6 +30,8 @@ class Figure extends React.Component {
 	}
 
 	processMoving(elData, pos) {
+		console.log(this.props)
+
 		var moveStatus = this.props.field.getMoveStatus(elData, pos);
 		var isValidMove = moveStatus.valid;
 		let oldPos = Object.assign({}, elData.figure.pos);
@@ -50,5 +52,3 @@ class Figure extends React.Component {
 		</Draggable>;
 	}
 }
-
-export default Figure;

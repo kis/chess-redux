@@ -1,13 +1,13 @@
 import { combineReducers } from 'redux';
 
 import * as actions from '../actions/actions';
-import helpers from './helpers';
+import * as helpers from './helpers';
 
 import Field from '../components/Logic/Field';
 
 let initialState = new Field()
 
-function chess(state = initialState, action) {
+function field(state = initialState, action) {
   switch (action.type) {
     case actions.GET_FIELD:
       return {
@@ -26,8 +26,8 @@ function chess(state = initialState, action) {
   }
 }
 
-const todoApp = combineReducers({
-  chess
+const chessApp = combineReducers({
+  field
 })
 
-export default todoApp;
+export default chessApp;

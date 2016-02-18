@@ -6,7 +6,7 @@ import Elephant from '../Figures/Elephant';
 import Horse    from '../Figures/Horse';
 import Pawn     from '../Figures/Pawn';
 
-class InitController {
+export default class InitController {
 
     constructor(opts) {
         this.whiteFigures = this.createFigures(0);
@@ -145,5 +145,3 @@ class InitController {
     }
 
 }
-
-export default InitController;

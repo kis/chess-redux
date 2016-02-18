@@ -1,7 +1,7 @@
 
 import InitController from './InitController';
 
-class Field {
+export default class Field {
 
     constructor() {
         this.letters = this.getLetters();
@@ -56,5 +56,3 @@ class Field {
 	}
 
 }
-
-export default Field;

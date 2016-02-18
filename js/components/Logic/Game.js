@@ -1,5 +1,5 @@
 
-class Game {
+export default class Game {
 
     constructor(opts) {
         this.time = null;

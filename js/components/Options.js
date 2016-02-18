@@ -5,7 +5,7 @@ const FIGURES = {
 	white: 'White'
 };
 
-class Options extends React.Component {
+export default class Options extends React.Component {
 	constructor(props) {
 		super(props);
 
@@ -43,5 +43,3 @@ class Options extends React.Component {
 		);
 	}
 }
-
-export default Options;

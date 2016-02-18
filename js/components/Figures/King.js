@@ -1,7 +1,7 @@
 
 import Figure from '../Logic/Figure';
 
-class King extends Figure {
+export default class King extends Figure {
 
     constructor(opts) {
         super(opts);
@@ -21,5 +21,3 @@ class King extends Figure {
     }
 
 }
-
-export default King;
