@@ -5,7 +5,7 @@ import * as helpers from './helpers';
 
 import Field from '../components/Logic/Field';
 
-let initialState = new Field()
+let initialState = new Field();
 
 function field(state = initialState, action) {
   switch (action.type) {
@@ -28,6 +28,6 @@ function field(state = initialState, action) {
 
 const chessApp = combineReducers({
   field
-})
+});
 
 export default chessApp;
