@@ -4,6 +4,7 @@ import InitController from './InitController';
 export default class Field {
 
     constructor() {
+        this.initCtrl = new InitController();
         this.letters = this.getLetters();
         this.data = this.getInitState();
     }
@@ -21,14 +22,13 @@ export default class Field {
     }
 
     getInitState() {
-        let initController = new InitController();
         let data = new Array();
 
         for (let i = 7; i >= 0; i--) {
             data[i] = new Array();
             for (let j = 0; j < 8; j++) {
                 data[i][j] = {
-                    figure: initController.getFigureByPosition({x: j, y: i}),
+                    figure: this.initCtrl.getFigureByPosition({x: j, y: i}),
                     class: (!(i%2) && !(j%2)) || (i%2 && j%2) ? 'white' : 'black'
                 };
             }

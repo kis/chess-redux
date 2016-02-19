@@ -62,79 +62,28 @@ export default class InitController {
         let figure = null;
 
         if (pos.y == 0) {
-            if (pos.x == 0) {
-                figure = this.blackFigures.rooks[0];
-            }
-
-            if (pos.x == 1) {
-                figure = this.blackFigures.horses[0];
-            }
-
-            if (pos.x == 2) {
-                figure = this.blackFigures.elephants[0];
-            }
-
-            if (pos.x == 3) {
-                figure = this.blackFigures.queens[0];
-            }
-
-            if (pos.x == 4) {
-                figure = this.blackFigures.kings[0];
-            }
-
-            if (pos.x == 5) {
-                figure = this.blackFigures.elephants[1];
-            }
-
-            if (pos.x == 6) {
-                figure = this.blackFigures.horses[1];
-            }
-
-            if (pos.x == 7) {
-                figure = this.blackFigures.rooks[1];
-            }
+            if (pos.x == 0) figure = this.blackFigures.rooks[0];
+            if (pos.x == 1) figure = this.blackFigures.horses[0];
+            if (pos.x == 2) figure = this.blackFigures.elephants[0];
+            if (pos.x == 3) figure = this.blackFigures.queens[0];
+            if (pos.x == 4) figure = this.blackFigures.kings[0];
+            if (pos.x == 5) figure = this.blackFigures.elephants[1];
+            if (pos.x == 6) figure = this.blackFigures.horses[1];
+            if (pos.x == 7) figure = this.blackFigures.rooks[1];
         }
 
-        if (pos.y == 1) {
-            figure = this.blackFigures.pawns[pos.x];
-        }
-
-        if (pos.y == 6) {
-            figure = this.whiteFigures.pawns[pos.x];
-        }
+        if (pos.y == 1) figure = this.blackFigures.pawns[pos.x];
+        if (pos.y == 6) figure = this.whiteFigures.pawns[pos.x];
 
         if (pos.y == 7) {
-            if (pos.x == 0) {
-                figure = this.whiteFigures.rooks[0];
-            }
-
-            if (pos.x == 1) {
-                figure = this.whiteFigures.horses[0];
-            }
-
-            if (pos.x == 2) {
-                figure = this.whiteFigures.elephants[0];
-            }
-
-            if (pos.x == 3) {
-                figure = this.whiteFigures.queens[0];
-            }
-
-            if (pos.x == 4) {
-                figure = this.whiteFigures.kings[0];
-            }
-
-            if (pos.x == 5) {
-                figure = this.whiteFigures.elephants[1];
-            }
-
-            if (pos.x == 6) {
-                figure = this.whiteFigures.horses[1];
-            }
-
-            if (pos.x == 7) {
-                figure = this.whiteFigures.rooks[1];
-            }
+            if (pos.x == 0) figure = this.whiteFigures.rooks[0];
+            if (pos.x == 1) figure = this.whiteFigures.horses[0];
+            if (pos.x == 2) figure = this.whiteFigures.elephants[0];
+            if (pos.x == 3) figure = this.whiteFigures.queens[0];
+            if (pos.x == 4) figure = this.whiteFigures.kings[0];
+            if (pos.x == 5) figure = this.whiteFigures.elephants[1];
+            if (pos.x == 6) figure = this.whiteFigures.horses[1];
+            if (pos.x == 7) figure = this.whiteFigures.rooks[1];
         }
 
         if (figure) {

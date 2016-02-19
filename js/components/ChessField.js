@@ -22,24 +22,20 @@ export default class ChessField extends React.Component {
 	}
 
 	repaintCell(oldPos) {
-		var data = eData.data;
-		var oldPos = eData.oldPos;
+		var obj = Object.assign({}, this.props.field);
+		var figureCopy = Object.assign({}, obj.data[oldPos.y][oldPos.x].figure);
 
-		var obj = Object.assign({}, data);
-		var figureCopy = obj[oldPos.y][oldPos.x].figure;
-
-		data[oldPos.y][oldPos.x].figure = null;
-		field.data = data;
+		obj.data[oldPos.y][oldPos.x].figure = null;
 
 		setTimeout(() => {
-		  data[oldPos.y][oldPos.x].figure = figureCopy;
-		  field.data = data;
-		}, 100);
+			this.props.actions.repaintCell(obj);
+		});
 
-		// return field;	
+		obj.data[oldPos.y][oldPos.x].figure = figureCopy;
+		console.log(obj.data[oldPos.y][oldPos.x])
 
-		this.props.actions.repaintCell({
-			oldPos: oldPos
+		setTimeout(() => {
+			this.props.actions.repaintCell(obj);
 		});
 	}
 
