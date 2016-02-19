@@ -3,10 +3,9 @@ import { combineReducers } from 'redux';
 import * as actions from '../actions/actions';
 
 import Field from '../components/Logic/Field';
+import fieldInstance from '../fieldInstance';
 
-let initialState = new Field();
-
-function field(state = initialState, action) {
+function field(state = fieldInstance, action) {
   switch (action.type) {
     case actions.GET_FIELD:
       return state;

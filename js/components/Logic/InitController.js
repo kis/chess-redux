@@ -23,36 +23,23 @@ export default class InitController {
             pawns: []
         };
 
-        figures.kings.push(new King({
-            color: color
-        }));
-
-        figures.queens.push(new Queen({
-            color: color
-        }));
+        figures.kings.push(new King({color: color}));
+        figures.queens.push(new Queen({color: color}));
 
         for(let i=0; i<2; i++) {
-            figures.rooks.push(new Rook({
-                color: color
-            }));
+            figures.rooks.push(new Rook({color: color}));
         }
 
         for(let i=0; i<2; i++) {
-            figures.elephants.push(new Elephant({
-                color: color
-            }));
+            figures.elephants.push(new Elephant({color: color}));
         }
 
         for(let i=0; i<2; i++) {
-            figures.horses.push(new Horse({
-                color: color
-            }));
+            figures.horses.push(new Horse({color: color}));
         }
 
         for(let i=0; i<8; i++) {
-            figures.pawns.push(new Pawn({
-                color: color
-            }));
+            figures.pawns.push(new Pawn({color: color}));
         }
 
         return figures;

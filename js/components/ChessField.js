@@ -1,12 +1,11 @@
 import React from 'react';
 
+import fieldInstance from '../fieldInstance';
 import FigureDraggable from './FigureDraggable';
 
 export default class ChessField extends React.Component {
 	constructor(props) {
 		super(props);
-
-		console.log(this.props)
 	}
 
 	moveFigureToCell(oldPos, pos) {
@@ -24,18 +23,17 @@ export default class ChessField extends React.Component {
 	repaintCell(oldPos) {
 		var obj = Object.assign({}, this.props.field);
 		var figureCopy = Object.assign({}, obj.data[oldPos.y][oldPos.x].figure);
-
 		obj.data[oldPos.y][oldPos.x].figure = null;
 
 		setTimeout(() => {
 			this.props.actions.repaintCell(obj);
-		});
 
-		obj.data[oldPos.y][oldPos.x].figure = figureCopy;
-		console.log(obj.data[oldPos.y][oldPos.x])
+			var obj2 = Object.assign({}, this.props.field);
+			var figureClone = fieldInstance.initCtrl.getFigureByPosition(figureCopy.initPos);
+			figureClone.move({x: oldPos.x, y: oldPos.y});
+			obj2.data[oldPos.y][oldPos.x].figure = figureClone;
 
-		setTimeout(() => {
-			this.props.actions.repaintCell(obj);
+			this.props.actions.repaintCell(obj2);
 		});
 	}
 
@@ -53,8 +51,6 @@ export default class ChessField extends React.Component {
 	}
 
 	renderChessLines() {
-		console.log(this.props)
-
 		return this.props.field.data.map((result, i) => {
 		  	return <div className="chess-line" key={i}>
 		  		{this.renderLettersField(8-i)}
