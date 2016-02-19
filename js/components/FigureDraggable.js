@@ -4,7 +4,7 @@ import Draggable, {DraggableCore} from 'react-draggable';
 
 const CellWidth = 90;
 
-export default class Figure extends React.Component {
+export default class FigureDraggable extends React.Component {
 	constructor(props) {
 		super(props);
 
@@ -19,6 +19,24 @@ export default class Figure extends React.Component {
 		};
 	}
 
+	getMoveStatus(elData, pos) {
+	    var currentField = this.props.field.data[pos.y][pos.x];
+	    var isValidMove = elData.figure.isValidMove(pos);
+
+	    var oursFigure = currentField.figure ? elData.figure.color == currentField.figure.color : null;
+	    var status = null;
+
+	    if (!currentField.figure) {
+	        status = {id: 1, valid: isValidMove, info: "move to empty cell"};
+	    } else if (!oursFigure) {
+	        status = {id: 2, valid: isValidMove, info: "move to enemy's cell"};
+	    } else if (oursFigure) {
+	        status = {id: 2, valid: isValidMove, info: "move to cell with your figure"};
+	    }    
+
+	    return status;       
+	}
+
 	dropFigure(elData, e, data) {
 		let transform = data.node.style.transform;
 		let arr = transform.match(/(-)?\d{1,3}/g);
@@ -30,9 +48,7 @@ export default class Figure extends React.Component {
 	}
 
 	processMoving(elData, pos) {
-		console.log(this.props)
-
-		var moveStatus = this.props.field.getMoveStatus(elData, pos);
+		var moveStatus = this.getMoveStatus(elData, pos);
 		var isValidMove = moveStatus.valid;
 		let oldPos = Object.assign({}, elData.figure.pos);
 

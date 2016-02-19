@@ -20,24 +20,6 @@ export default class Field {
         return letters;
     }
 
-    getMoveStatus(elData, pos) {
-        var currentField = this.data[pos.y][pos.x];
-        var isValidMove = elData.figure.isValidMove(pos);
-
-        var oursFigure = currentField.figure ? elData.figure.color == currentField.figure.color : null;
-        var status = null;
-
-        if (!currentField.figure) {
-            status = {id: 1, valid: isValidMove, info: "move to empty cell"};
-        } else if (!oursFigure) {
-            status = {id: 2, valid: isValidMove, info: "move to enemy's cell"};
-        } else if (oursFigure) {
-            status = {id: 2, valid: isValidMove, info: "move to cell with your figure"};
-        }    
-
-        return status;       
-    }
-
     getInitState() {
         let initController = new InitController();
         let data = new Array();

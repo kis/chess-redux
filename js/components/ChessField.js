@@ -1,33 +1,44 @@
 import React from 'react';
 
-import Figure from './Figure';
+import FigureDraggable from './FigureDraggable';
 
 export default class ChessField extends React.Component {
 	constructor(props) {
 		super(props);
 
-		this.state = {
-			data: this.props.field.data
-		};
+		console.log(this.props)
 	}
 
-	/*_onChange() {
-		setTimeout(() => {
-			this.setState({data: ChessStore.getField().data});
-		}, 100);
-	}*/
+	moveFigureToCell(oldPos, pos) {
+		var obj = Object.assign({}, this.props.field);
+		var figureCopy = obj.data[oldPos.y][oldPos.x].figure;
+		
+		obj.data[pos.y][pos.x].figure = figureCopy;
+		obj.data[oldPos.y][oldPos.x].figure = null;
 
-	moveFigureToCell(data, oldPos, pos) {
-		this.props.actions.moveFigureToCell({
-			data: data,
-			oldPos: oldPos,
-			pos: pos
+		setTimeout(() => {
+			this.props.actions.moveFigureToCell(obj);
 		});
 	}
 
-	repaintCell(data, oldPos) {
+	repaintCell(oldPos) {
+		var data = eData.data;
+		var oldPos = eData.oldPos;
+
+		var obj = Object.assign({}, data);
+		var figureCopy = obj[oldPos.y][oldPos.x].figure;
+
+		data[oldPos.y][oldPos.x].figure = null;
+		field.data = data;
+
+		setTimeout(() => {
+		  data[oldPos.y][oldPos.x].figure = figureCopy;
+		  field.data = data;
+		}, 100);
+
+		// return field;	
+
 		this.props.actions.repaintCell({
-			data: data,
 			oldPos: oldPos
 		});
 	}
@@ -46,7 +57,9 @@ export default class ChessField extends React.Component {
 	}
 
 	renderChessLines() {
-		return this.state.data.map((result, i) => {
+		console.log(this.props)
+
+		return this.props.field.data.map((result, i) => {
 		  	return <div className="chess-line" key={i}>
 		  		{this.renderLettersField(8-i)}
 			 	{result.map((res, j) => {
@@ -60,21 +73,16 @@ export default class ChessField extends React.Component {
 	renderChessCell(res, key) {
 		var cellClass = "chess-field " + res.class;
 
-		var opts = {
-			moveFigure: this.moveFigureToCell.bind(this, this.state.data),
-			repaintCell: this.repaintCell.bind(this, this.state.data)
-		};
-
 		return <div className={cellClass} data-x={res.x} data-y={res.y} key={key}>
-			{res.figure ? this.renderFigure(res, opts) : null}
+			{res.figure ? this.renderFigure(res) : null}
 		</div>
 	}
 
-	renderFigure(res, opts) {
-		return <Figure opts={res} 
+	renderFigure(res) {
+		return <FigureDraggable opts={res} 
 				field={this.props.field} 
-				moveFigureToCell={opts.moveFigure}
-				repaintCell={opts.repaintCell} />
+				moveFigureToCell={this.moveFigureToCell.bind(this)}
+				repaintCell={this.repaintCell.bind(this)} />
 	}
 
 	render() {

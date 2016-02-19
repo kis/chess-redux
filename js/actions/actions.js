@@ -18,7 +18,7 @@ export function getField() {
 export function moveFigureToCell(data) {
   return {
     type: MOVE_FIGURE_TO_CELL,
-    data: data
+    data
   }
 }
 
