@@ -5,7 +5,6 @@ export default class King extends Figure {
 
     constructor(opts) {
         super(opts);
-        this.color = opts.color;
         this.code = this.color ? '&#9818;' : '&#9812;';
     }
 

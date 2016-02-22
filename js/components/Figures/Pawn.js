@@ -5,7 +5,6 @@ export default class Pawn extends Figure {
 
     constructor(opts) {
         super(opts);
-        this.color = opts.color;
         this.code = this.color ? '&#9823;' : '&#9817;';
     }
 

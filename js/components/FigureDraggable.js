@@ -2,39 +2,35 @@ import React from 'react';
 
 import Draggable, {DraggableCore} from 'react-draggable';
 
-const CellWidth = 90;
-
 export default class FigureDraggable extends React.Component {
 	constructor(props) {
 		super(props);
 
+		this.cellWidth = 90;
+
 		this.dragOptions = {
 			bounds: {
-				left: -90*this.props.opts.x,
-				top: -90*this.props.opts.y,
-				right: 90*(7-this.props.opts.x), 
-				bottom: 90*(7-this.props.opts.y)
+				left: -90*this.props.opts.figure.pos.x,
+				top: -90*this.props.opts.figure.pos.y,
+				right: 90*(7-this.props.opts.figure.pos.x), 
+				bottom: 90*(7-this.props.opts.figure.pos.y)
 			},
-			grid: [CellWidth, CellWidth]
+			grid: [this.cellWidth, this.cellWidth]
 		};
 	}
 
 	getMoveStatus(elData, pos) {
 	    var currentField = this.props.field.data[pos.y][pos.x];
 	    var isValidMove = elData.figure.isValidMove(pos);
-
 	    var oursFigure = currentField.figure ? elData.figure.color == currentField.figure.color : null;
-	    var status = null;
 
 	    if (!currentField.figure) {
-	        status = {id: 1, valid: isValidMove, info: "move to empty cell"};
+	        return {id: 1, valid: isValidMove, info: "move to empty cell"};
 	    } else if (!oursFigure) {
-	        status = {id: 2, valid: isValidMove, info: "move to enemy's cell"};
+	        return {id: 2, valid: isValidMove, info: "move to enemy's cell"};
 	    } else if (oursFigure) {
-	        status = {id: 2, valid: isValidMove, info: "move to cell with your figure"};
-	    }    
-
-	    return status;       
+	        return {id: 2, valid: isValidMove, info: "move to cell with your figure"};
+	    }
 	}
 
 	dropFigure(elData, e, data) {

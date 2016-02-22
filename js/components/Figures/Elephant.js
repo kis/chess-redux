@@ -5,7 +5,6 @@ export default class Elephant extends Figure {
 
     constructor(opts) {
         super(opts);
-        this.color = opts.color;
         this.code = this.color ? '&#9821;' : '&#9815;';
     }
 
