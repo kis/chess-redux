@@ -1,6 +1,6 @@
 import React from 'react';
 
-import fieldInstance from '../fieldInstance';
+import fieldInstance from '../../fieldInstance';
 import FigureDraggable from './FigureDraggable';
 
 export default class ChessField extends React.Component {

@@ -8,31 +8,27 @@ const FIGURES = {
 export default class Options extends React.Component {
 	constructor(props) {
 		super(props);
-
-		this.state = {
-			currentFigure: this.props.currentFigure
-		};
 	}
 
 	changeCurrentFigure() {
 		var black = FIGURES.black,
 			white = FIGURES.white;
-
-		this.state.currentFigure = this.state.currentFigure == black ? white : black;
 	}
 
 	start() {
-
+		this.props.actions.startGame();
 	}
 
 	restart() {
-
+		this.props.actions.restartGame();
 	}
 
 	render() {
+		var movingStyle = this.props.options.started ? 'moving-style' : 'moving-style hidden';
+
 		return (
 			<div className="chess-options">
-				<div className="moving-style">{this.state.currentFigure} is moving</div>
+				<div className={movingStyle}>{this.props.options.figure} is moving</div>
 				<div className="button-style">
 					<button onClick={this.props.start}>Start</button>
 				</div>

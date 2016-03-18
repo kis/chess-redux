@@ -5,21 +5,35 @@ import * as actions from '../actions/actions';
 import Field from '../components/Logic/Field';
 import fieldInstance from '../fieldInstance';
 
-function field(state = fieldInstance, action) {
+var options = {
+  started: false,
+  figure: 'Black'
+};
+
+var init = {
+  field: fieldInstance, 
+  options: options
+};
+
+function game(state = init, action) {
   switch (action.type) {
+    case actions.START_GAME:
+      return {...state};
+    case actions.RESTART_GAME:
+      return {...state};
     case actions.GET_FIELD:
-      return state;
+      return {...state};
     case actions.MOVE_FIGURE_TO_CELL:
-      return action.data;
+      return {...state, data: action.data};
     case actions.REPAINT_CELL:
-      return action.data;
+      return {...state, data: action.data};
     default:
-      return state;
+      return {...state};
   }
 }
 
 const chessApp = combineReducers({
-  field
+  game
 });
 
 export default chessApp;

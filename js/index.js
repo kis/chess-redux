@@ -8,7 +8,7 @@ import '../css/styles.css';
 
 import chessApp from './reducers/reducers';
 
-import App from './containers/App';
+import App from './components/App';
 
 let store = createStore(chessApp);
 

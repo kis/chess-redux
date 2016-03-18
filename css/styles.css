@@ -74,6 +74,10 @@
 	color: #7D4B00;
 }
 
+.moving-style.hidden {
+	display: none;
+}
+
 .button-style {
 	text-align: center;
 	padding: 10px;
