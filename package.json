@@ -20,5 +20,12 @@
     "webpack": "^1.12.2",
     "webpack-dev-server": "^1.12.1"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "autoprefixer": "^6.3.4",
+    "node-sass": "^3.4.2",
+    "postcss-loader": "^0.8.2",
+    "precss": "^1.4.0",
+    "sass-loader": "^3.2.0"
+  }
 }

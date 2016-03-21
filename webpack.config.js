@@ -1,6 +1,9 @@
 var path = require('path');
 var webpack = require('webpack');
 
+var autoprefixer = require('autoprefixer');
+var precss       = require('precss');
+
 module.exports = {
   entry: [
     'webpack-dev-server/client?http://localhost:3000',
@@ -22,8 +25,11 @@ module.exports = {
       exclude: /node_modules/,
       include: path.join(__dirname, 'js')
     }, {
-      test: /\.css?$/,
-      loader: 'style-loader!css-loader?sourceMap!autoprefixer-loader?{browsers:["last 3 version"]}'
+      test: /(\.scss|\.css)$/,
+      loader: 'style-loader!css-loader!postcss-loader!sass-loader'
     }]
+  },
+  postcss: function () {
+    return [autoprefixer, precss];
   }
 };

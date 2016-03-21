@@ -25,6 +25,7 @@ export default class Options extends React.Component {
 
 	render() {
 		var movingStyle = this.props.options.started ? 'moving-style' : 'moving-style hidden';
+		var restartStyle = this.props.options.started ? 'button-style' : 'button-style hidden';
 
 		return (
 			<div className="chess-options">
@@ -32,7 +33,7 @@ export default class Options extends React.Component {
 				<div className="button-style">
 					<button onClick={this.props.start}>Start</button>
 				</div>
-				<div className="button-style">
+				<div className={restartStyle}>
 					<button onClick={this.props.restart}>Restart</button>
 				</div>
 			</div>

@@ -2,60 +2,53 @@
 	position: absolute;
 	left: 25%;
 	width: 950px;
-}
 
-.letters-line {
-	display: block;
-	font-size: 0;
-	height: 90px;
-}
+	.letters-line {
+		display: block;
+		font-size: 0;
+		height: 90px;
+	}
 
-.letters-field {
-	display: inline-block;
-	vertical-align: top;
-	width: 90px;
-	height: 90px;
-	text-align: center;
-	font-size: 48px;
-	line-height: 90px;
-}
+	.letters-field {
+		display: inline-block;
+		vertical-align: top;
+		width: 90px;
+		height: 90px;
+		text-align: center;
+		font-size: 48px;
+		line-height: 90px;
+		border: 1px solid transparent;
 
-.letters-field.info {
-	margin-bottom: 20px;
-}
+		&.info {
+			margin-bottom: 20px;
+		}
+	}
 
-.chess-line {
-	display: block;
-	font-size: 0;
-	height: 90px;
-}
+	.chess-line {
+		display: block;
+		font-size: 0;
+		height: 90px;
 
-.chess-field {
-	display: inline-block;
-	vertical-align: top;
-	line-height: 90px;
-	width: 90px;
-	height: 90px;
-	font-size: 14px;
-	text-align: center;
-	border: 1px solid #CEAD7C;
-	cursor: pointer;
-}
+		.chess-field {
+			display: inline-block;
+			vertical-align: top;
+			line-height: 90px;
+			width: 90px;
+			height: 90px;
+			font-size: 14px;
+			text-align: center;
+			border: 1px solid #CEAD7C;
+			cursor: pointer;
 
-.chess-field.black {
-	background-color: #CEAD7C;
-}
+			&.black {
+				background-color: #CEAD7C;
+			}
+		}
+	}
 
-/* .chess-field:hover {
-	background-color: yellow;
-} */
-
-.figure {
-	font-size: 72px;
-}
-
-.figure-init {
-	transform: translate(0px, 0px) !important;
+	.figure {
+		font-size: 72px;
+	}
 }
 
 .chess-options {
@@ -66,33 +59,37 @@
 	height: 190px;
 	background-color: #FFFCEA;
 	border: 2px solid #CEAD7C;
-}
 
-.moving-style {
-	text-align: center;
-	padding: 20px;
-	color: #7D4B00;
-}
+	.moving-style {
+		text-align: center;
+		padding: 20px;
+		color: #7D4B00;
 
-.moving-style.hidden {
-	display: none;
-}
+		&.hidden {
+			display: none;
+		}
+	}
 
-.button-style {
-	text-align: center;
-	padding: 10px;
-}
+	.button-style {
+		text-align: center;
+		padding: 10px;
 
-.button-style button {
-	text-align: center;
-	padding: 10px;
-	background-color: white;
-	color: #7D4B00;
-	border: 2px solid #CEAD7C;
-	outline: none;
-}
+		button {
+			text-align: center;
+			padding: 10px;
+			background-color: white;
+			color: #7D4B00;
+			border: 2px solid #CEAD7C;
+			outline: none;
 
-.button-style button:hover {
-	cursor: pointer;
-	background-color: #CEAD7C;
+			&:hover {
+				cursor: pointer;
+				background-color: #CEAD7C;
+			}
+		}
+
+		&.hidden {
+			display: none;
+		}
+	}
 }
