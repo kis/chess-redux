@@ -10,31 +10,32 @@ export default class Options extends React.Component {
 		super(props);
 	}
 
-	changeCurrentFigure() {
-		var black = FIGURES.black,
-			white = FIGURES.white;
-	}
-
 	start() {
 		this.props.actions.startGame();
 	}
 
-	restart() {
-		this.props.actions.restartGame();
+	end() {
+		this.props.actions.endGame();
 	}
 
 	render() {
+		var figure = this.props.options.black ? FIGURES.black : FIGURES.white;
+
 		var movingStyle = this.props.options.started ? 'moving-style' : 'moving-style hidden';
-		var restartStyle = this.props.options.started ? 'button-style' : 'button-style hidden';
+		var startStyle = !this.props.options.started ? 'button-style' : 'button-style hidden';
+		var endStyle = this.props.options.started ? 'button-style' : 'button-style hidden';
+
+		var start = this.start.bind(this);
+		var end = this.end.bind(this);
 
 		return (
 			<div className="chess-options">
-				<div className={movingStyle}>{this.props.options.figure} is moving</div>
-				<div className="button-style">
-					<button onClick={this.props.start}>Start</button>
+				<div className={movingStyle}>{figure} is moving</div>
+				<div className={startStyle}>
+					<button onClick={start}>Start</button>
 				</div>
-				<div className={restartStyle}>
-					<button onClick={this.props.restart}>Restart</button>
+				<div className={endStyle}>
+					<button onClick={end}>End</button>
 				</div>
 			</div>
 		);

@@ -20,20 +20,20 @@ export default class ChessField extends React.Component {
 		});
 	}
 
-	repaintCell(oldPos) {
+	moveFigureBack(oldPos) {
 		var obj = Object.assign({}, this.props.field);
 		var figureCopy = Object.assign({}, obj.data[oldPos.y][oldPos.x].figure);
 		obj.data[oldPos.y][oldPos.x].figure = null;
 
 		setTimeout(() => {
-			this.props.actions.repaintCell(obj);
+			this.props.actions.moveFigureBack(obj);
 
 			var obj2 = Object.assign({}, this.props.field);
 			var figureClone = fieldInstance.initCtrl.getFigureByPosition(figureCopy.initPos);
 			figureClone.move({x: oldPos.x, y: oldPos.y});
 			obj2.data[oldPos.y][oldPos.x].figure = figureClone;
 
-			this.props.actions.repaintCell(obj2);
+			this.props.actions.moveFigureBack(obj2);
 		});
 	}
 
@@ -74,7 +74,7 @@ export default class ChessField extends React.Component {
 		return <FigureDraggable opts={res} 
 				field={this.props.field} 
 				moveFigureToCell={this.moveFigureToCell.bind(this)}
-				repaintCell={this.repaintCell.bind(this)} />
+				moveFigureBack={this.moveFigureBack.bind(this)} />
 	}
 
 	render() {

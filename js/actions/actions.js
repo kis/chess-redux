@@ -4,9 +4,9 @@ export function startGame() {
   }
 }
 
-export function restartGame() {
+export function endGame() {
   return {
-    type: 'RESTART_GAME'
+    type: 'END_GAME'
   }
 }
 
@@ -29,9 +29,9 @@ export function moveFigureToCell(data) {
   }
 }
 
-export function repaintCell(data) {
+export function moveFigureBack(data) {
   return {
-    type: 'REPAINT_CELL',
+    type: 'MOVE_FIGURE_BACK',
     data: data
   }
 }

@@ -49,7 +49,7 @@ export default class FigureDraggable extends React.Component {
 		let oldPos = Object.assign({}, elData.figure.pos);
 
 		if (!isValidMove) {
-			this.props.repaintCell(oldPos);
+			this.props.moveFigureBack(oldPos);
 		} else {
 			elData.figure.move(pos);
 			this.props.moveFigureToCell(oldPos, pos);

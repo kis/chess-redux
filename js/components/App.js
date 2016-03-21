@@ -8,6 +8,8 @@ import Options from '../components/Main/Options';
 
 class App extends Component {
   render() {
+    console.log(this.props)
+
     return (
       <div>
         <ChessField field={this.props.game.field} actions={this.props.actions} />
