@@ -48,7 +48,7 @@ export default class FigureDraggable extends React.Component {
 		var isValidMove = moveStatus.valid;
 		let oldPos = Object.assign({}, elData.figure.pos);
 
-		if (!isValidMove) {
+		if (!isValidMove || !this.props.options.started) {
 			this.props.moveFigureBack(oldPos);
 		} else {
 			elData.figure.move(pos);

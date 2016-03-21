@@ -9,14 +9,15 @@ export default class ChessField extends React.Component {
 	}
 
 	moveFigureToCell(oldPos, pos) {
+		var objOld = Object.assign({}, this.props.field);
 		var obj = Object.assign({}, this.props.field);
-		var figureCopy = obj.data[oldPos.y][oldPos.x].figure;
+		var figureCopy = Object.assign({}, obj.data[oldPos.y][oldPos.x].figure);
 		
 		obj.data[pos.y][pos.x].figure = figureCopy;
 		obj.data[oldPos.y][oldPos.x].figure = null;
 
 		setTimeout(() => {
-			this.props.actions.moveFigureToCell(obj);
+			this.props.actions.moveFigureToCell(objOld, obj);
 		});
 	}
 
@@ -73,6 +74,7 @@ export default class ChessField extends React.Component {
 	renderFigure(res) {
 		return <FigureDraggable opts={res} 
 				field={this.props.field} 
+				options={this.props.options}
 				moveFigureToCell={this.moveFigureToCell.bind(this)}
 				moveFigureBack={this.moveFigureBack.bind(this)} />
 	}

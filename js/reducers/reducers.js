@@ -34,10 +34,10 @@ function game(state = init, action) {
       var opts = Object.assign({}, state.options, {
         black: !state.options.black
       });
-      return {...state, field: action.data, options: opts};
+      return {...state, field: action.field, options: opts};
 
     case 'MOVE_FIGURE_BACK':
-      return {...state, field: action.data};
+      return {...state, field: action.oldField};
 
     default:
       return {...state};

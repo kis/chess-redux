@@ -22,16 +22,17 @@ export function getField() {
   }
 }
 
-export function moveFigureToCell(data) {
+export function moveFigureToCell(oldField, field) {
   return {
     type: 'MOVE_FIGURE_TO_CELL',
-    data
+    oldField: oldField,
+    field: field
   }
 }
 
-export function moveFigureBack(data) {
+export function moveFigureBack(oldField) {
   return {
     type: 'MOVE_FIGURE_BACK',
-    data: data
+    oldField: oldField
   }
 }

@@ -12,7 +12,7 @@ class App extends Component {
 
     return (
       <div>
-        <ChessField field={this.props.game.field} actions={this.props.actions} />
+        <ChessField field={this.props.game.field} options={this.props.game.options} actions={this.props.actions} />
         <Options options={this.props.game.options} actions={this.props.actions} />
       </div>
     )
