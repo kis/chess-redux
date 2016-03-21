@@ -5,7 +5,7 @@ export default class Pawn extends Figure {
 
     constructor(opts) {
         super(opts);
-        this.code = this.color ? '&#9823;' : '&#9817;';
+        this.code = this.isBlack ? '&#9823;' : '&#9817;';
     }
 
     isValidMove(pos) {

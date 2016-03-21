@@ -5,7 +5,7 @@ export default class Rook extends Figure {
 
     constructor(opts) {
         super(opts);
-        this.code = this.color ? '&#9820;' : '&#9814;';
+        this.code = this.isBlack ? '&#9820;' : '&#9814;';
     }
 
     isValidMove(pos) {

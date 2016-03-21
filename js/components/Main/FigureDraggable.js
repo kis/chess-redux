@@ -20,9 +20,11 @@ export default class FigureDraggable extends React.Component {
 	}
 
 	getMoveStatus(elData, pos) {
+		console.log(elData)
+
 	    var currentField = this.props.field.data[pos.y][pos.x];
 	    var isValidMove = elData.figure.isValidMove(pos);
-	    var oursFigure = currentField.figure ? elData.figure.color == currentField.figure.color : null;
+	    var oursFigure = currentField.figure ? elData.figure.isBlack == currentField.figure.isBlack : null;
 
 	    if (!currentField.figure) {
 	        return {id: 1, valid: isValidMove, info: "move to empty cell"};
@@ -48,7 +50,7 @@ export default class FigureDraggable extends React.Component {
 		var isValidMove = moveStatus.valid;
 		let oldPos = Object.assign({}, elData.figure.pos);
 
-		if (!isValidMove || !this.props.options.started) {
+		if (!isValidMove || !this.props.options.started || elData.figure.isBlack !== this.props.options.black) {
 			this.props.moveFigureBack(oldPos);
 		} else {
 			elData.figure.move(pos);

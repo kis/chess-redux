@@ -5,7 +5,7 @@ export default class Elephant extends Figure {
 
     constructor(opts) {
         super(opts);
-        this.code = this.color ? '&#9821;' : '&#9815;';
+        this.code = this.isBlack ? '&#9821;' : '&#9815;';
     }
 
     isValidMove(pos) {

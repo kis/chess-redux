@@ -11,7 +11,7 @@ export default class ChessField extends React.Component {
 	moveFigureToCell(oldPos, pos) {
 		var objOld = Object.assign({}, this.props.field);
 		var obj = Object.assign({}, this.props.field);
-		var figureCopy = Object.assign({}, obj.data[oldPos.y][oldPos.x].figure);
+		var figureCopy = obj.data[oldPos.y][oldPos.x].figure;
 		
 		obj.data[pos.y][pos.x].figure = figureCopy;
 		obj.data[oldPos.y][oldPos.x].figure = null;

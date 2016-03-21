@@ -5,7 +5,7 @@ export default class Queen extends Figure {
 
     constructor(opts) {
         super(opts);
-        this.code = this.color ? '&#9819;' : '&#9813;';
+        this.code = this.isBlack ? '&#9819;' : '&#9813;';
     }
 
     isValidMove(pos) {

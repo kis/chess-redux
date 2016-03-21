@@ -9,11 +9,11 @@ import Pawn     from '../Figures/Pawn';
 export default class InitController {
 
     constructor(opts) {
-        this.whiteFigures = this.createFigures(0);
-        this.blackFigures = this.createFigures(1);
+        this.whiteFigures = this.createFigures(false);
+        this.blackFigures = this.createFigures(true);
     }
 
-    createFigures(color) {
+    createFigures(isBlack) {
         var figures = {
             kings: [],
             queens: [],
@@ -23,23 +23,23 @@ export default class InitController {
             pawns: []
         };
 
-        figures.kings.push(new King({color: color}));
-        figures.queens.push(new Queen({color: color}));
+        figures.kings.push(new King({isBlack: isBlack}));
+        figures.queens.push(new Queen({isBlack: isBlack}));
 
         for(let i=0; i<2; i++) {
-            figures.rooks.push(new Rook({color: color}));
+            figures.rooks.push(new Rook({isBlack: isBlack}));
         }
 
         for(let i=0; i<2; i++) {
-            figures.elephants.push(new Elephant({color: color}));
+            figures.elephants.push(new Elephant({isBlack: isBlack}));
         }
 
         for(let i=0; i<2; i++) {
-            figures.horses.push(new Horse({color: color}));
+            figures.horses.push(new Horse({isBlack: isBlack}));
         }
 
         for(let i=0; i<8; i++) {
-            figures.pawns.push(new Pawn({color: color}));
+            figures.pawns.push(new Pawn({isBlack: isBlack}));
         }
 
         return figures;

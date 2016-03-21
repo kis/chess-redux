@@ -2,7 +2,7 @@
 export default class Figure {
 
     constructor(opts) {
-        this.color = opts.color;
+        this.isBlack = opts.isBlack;
     }
 
     setInitPos(pos) {

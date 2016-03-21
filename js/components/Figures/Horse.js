@@ -5,7 +5,7 @@ export default class Horse extends Figure {
 
     constructor(opts) {
         super(opts);
-        this.code = this.color ? '&#9822;' : '&#9816;';
+        this.code = this.isBlack ? '&#9822;' : '&#9816;';
     }
 
     isValidMove(pos) {
