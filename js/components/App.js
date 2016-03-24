@@ -19,20 +19,6 @@ class App extends Component {
   }
 }
 
-/*function mapStateToProps(state) {
-  console.log(state)
-
-  return {
-    field: state.field
-  }
-}
-
-function mapDispatchToProps(dispatch) {
-  return {
-    actions: bindActionCreators(actions, dispatch)
-  }
-}*/
-
 const mapStateToProps = (state) => ({
   game: state.game
 });

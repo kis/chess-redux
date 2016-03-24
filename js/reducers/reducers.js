@@ -13,20 +13,8 @@ var init = {
   }
 };
 
-function game(state = init, action) {
+function field(state = init, action) {
   switch (action.type) {
-    case 'START_GAME':
-      var opts = Object.assign({}, state.options, {
-        started: !state.options.started
-      });
-      return {...state, options: opts};
-
-    case 'END_GAME':
-      var opts = Object.assign({}, state.options, {
-        started: false
-      });
-      return {...state, options: opts};
-
     case 'GET_FIELD':
       return {...state};
 
@@ -44,8 +32,27 @@ function game(state = init, action) {
   }
 }
 
+function game(state = init, action) {
+  switch (action.type) {
+    case 'START_GAME':
+      var opts = Object.assign({}, state.options, {
+        started: !state.options.started
+      });
+      return {...state, options: opts};
+
+    case 'END_GAME':
+      var opts = Object.assign({}, state.options, {
+        started: false
+      });
+      return {...state, options: opts};
+
+    default:
+      return {...state};
+  }
+}
+
 const chessApp = combineReducers({
-  game
+  field, game
 });
 
 export default chessApp;
