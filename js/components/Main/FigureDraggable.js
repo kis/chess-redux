@@ -20,8 +20,6 @@ export default class FigureDraggable extends React.Component {
 	}
 
 	getMoveStatus(elData, pos) {
-		console.log(elData)
-
 	    var currentField = this.props.field.data[pos.y][pos.x];
 	    var isValidMove = elData.figure.isValidMove(pos);
 	    var oursFigure = currentField.figure ? elData.figure.isBlack == currentField.figure.isBlack : null;
@@ -50,7 +48,7 @@ export default class FigureDraggable extends React.Component {
 		var isValidMove = moveStatus.valid;
 		let oldPos = Object.assign({}, elData.figure.pos);
 
-		if (!isValidMove || !this.props.options.started || elData.figure.isBlack !== this.props.options.black) {
+		if (!isValidMove || !this.props.options.started || elData.figure.isBlack !== this.props.field.black) {
 			this.props.moveFigureBack(oldPos);
 		} else {
 			elData.figure.move(pos);

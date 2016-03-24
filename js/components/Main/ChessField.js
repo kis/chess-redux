@@ -1,6 +1,5 @@
 import React from 'react';
 
-import fieldInstance from '../../fieldInstance';
 import FigureDraggable from './FigureDraggable';
 
 export default class ChessField extends React.Component {
@@ -30,7 +29,7 @@ export default class ChessField extends React.Component {
 			this.props.actions.moveFigureBack(obj);
 
 			var obj2 = Object.assign({}, this.props.field);
-			var figureClone = fieldInstance.initCtrl.getFigureByPosition(figureCopy.initPos);
+			var figureClone = this.props.field.initCtrl.getFigureByPosition(figureCopy.initPos);
 			figureClone.move({x: oldPos.x, y: oldPos.y});
 			obj2.data[oldPos.y][oldPos.x].figure = figureClone;
 

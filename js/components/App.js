@@ -12,15 +12,16 @@ class App extends Component {
 
     return (
       <div>
-        <ChessField field={this.props.game.field} options={this.props.game.options} actions={this.props.actions} />
-        <Options options={this.props.game.options} actions={this.props.actions} />
+        <ChessField field={this.props.field} options={this.props.options} actions={this.props.actions} />
+        <Options field={this.props.field} options={this.props.options} actions={this.props.actions} />
       </div>
     )
   }
 }
 
 const mapStateToProps = (state) => ({
-  game: state.game
+  options: state.options,
+  field: state.field
 });
 
 const mapDispatchToProps = (dispatch) => ({actions: bindActionCreators(actions, dispatch)});

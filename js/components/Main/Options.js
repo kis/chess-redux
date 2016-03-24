@@ -19,7 +19,7 @@ export default class Options extends React.Component {
 	}
 
 	render() {
-		var figure = this.props.options.black ? FIGURES.black : FIGURES.white;
+		var figure = this.props.field.black ? FIGURES.black : FIGURES.white;
 
 		var movingStyle = this.props.options.started ? 'moving-style' : 'moving-style hidden';
 		var startStyle = !this.props.options.started ? 'button-style' : 'button-style hidden';

@@ -7,6 +7,7 @@ export default class Field {
         this.initCtrl = new InitController();
         this.letters = this.getLetters();
         this.data = this.getInitState();
+        this.black = false;
     }
 
     getData() {
