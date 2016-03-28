@@ -10,6 +10,17 @@ import chessApp from './reducers/reducers';
 
 import App from './components/App';
 
+import io from 'socket.io-client';
+
+var socket = io.connect('http://localhost:3000');
+
+socket.on('move', function (data) {
+	console.log('Author');
+
+  	console.log(data);
+  	socket.emit('my other event', { my: 'data' });
+});
+
 let store = createStore(chessApp);
 
 ReactDOM.render(<Provider store={store}>
