@@ -1,15 +1,18 @@
-var app = require('express').createServer();
-var io = require('socket.io')(app);
+var app = require('express')();
+var server = require('http').createServer(app);
+var io = require('socket.io').listen(server);
 
-app.listen(3000);
+server.listen(3001, "127.0.0.1");
 
 app.get('/', function (req, res) {
-  res.sendfile(__dirname + '/index.html');
+	console.log('Listening at localhost:3001')
+	res.sendFile(__dirname + '/index.html');
 });
 
 io.on('connection', function (socket) {
-  socket.emit('move', { hello: 'world' });
-  socket.on('my other event', function (data) {
-    console.log(data);
-  });
+	console.log('connected')
+	socket.emit('move', { hello: 'world' });
+	socket.on('my other event', function (data) {
+	  console.log(data);
+	});
 });

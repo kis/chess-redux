@@ -13,7 +13,8 @@ module.exports = {
   output: {
     path: __dirname,
     filename: 'bundle.js',
-    publicPath: '/static/'
+    publicPath: "http://localhost:8080/static/"
+    // publicPath: '/static/'
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin()
