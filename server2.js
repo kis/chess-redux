@@ -18,6 +18,10 @@ var numUsers = 0;
 
 io.on('connection', function (socket) {
 
+	socket.on('message', function (message) {
+		
+	});
+
 	socket.on('add user', function (username) {
 		// if (addedUser) return;
 

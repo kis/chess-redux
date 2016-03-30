@@ -10,6 +10,13 @@ export function endGame() {
   }
 }
 
+export function sendMessage(message, messages) {
+  return {
+    type: 'SEND_MESSAGE',
+    message: message
+  }
+}
+
 export function initField() {
   return {
     type: 'INIT_FIELD'

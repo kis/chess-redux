@@ -12,6 +12,10 @@ export default class Options extends React.Component {
 		super(props);
 	}
 
+	shouldComponentUpdate(nextProps, nextState) {
+		return true;
+	}
+
 	start() {
 		this.props.actions.startGame();
 	}
@@ -40,7 +44,7 @@ export default class Options extends React.Component {
 				</div>
 				<div className={movingStyle}>{figure} is moving</div>
 
-				<Chat />
+				<Chat messages={this.props.options.messages} actions={this.props.actions} />
 			</div>
 		);
 	}

@@ -13,7 +13,8 @@ socket.on('move', function (data) {
 });
 
 var gameInit = {
-  started: false
+  started: false,
+  messages: []
 };
 
 function options(state = gameInit, action) {
@@ -23,6 +24,10 @@ function options(state = gameInit, action) {
 
     case 'END_GAME':
     return {...state, started: false};
+
+    case 'SEND_MESSAGE':
+    console.log(state.messages, action.message)
+    return {...state, messages: [...state.messages, action.message]};
 
     default:
     return {...state};
