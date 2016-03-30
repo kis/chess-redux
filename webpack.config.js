@@ -6,7 +6,7 @@ var precss       = require('precss');
 
 module.exports = {
   entry: [
-    'webpack-dev-server/client?http://localhost:3000',
+    // 'webpack-dev-server/client?http://localhost:3000',
     './js/index'
   ],
   devtool: 'eval',

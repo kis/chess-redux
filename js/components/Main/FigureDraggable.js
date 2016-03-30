@@ -6,14 +6,14 @@ export default class FigureDraggable extends React.Component {
 	constructor(props) {
 		super(props);
 
-		this.cellWidth = 90;
+		this.cellWidth = 80;
 
 		this.dragOptions = {
 			bounds: {
-				left: -90*this.props.opts.figure.pos.x,
-				top: -90*this.props.opts.figure.pos.y,
-				right: 90*(7-this.props.opts.figure.pos.x), 
-				bottom: 90*(7-this.props.opts.figure.pos.y)
+				left: -80*this.props.opts.figure.pos.x,
+				top: -80*this.props.opts.figure.pos.y,
+				right: 80*(7-this.props.opts.figure.pos.x), 
+				bottom: 80*(7-this.props.opts.figure.pos.y)
 			},
 			grid: [this.cellWidth, this.cellWidth]
 		};
@@ -37,7 +37,7 @@ export default class FigureDraggable extends React.Component {
 		let transform = data.node.style.transform;
 		let arr = transform.match(/(-)?\d{1,3}/g);
 		let [a, b] = arr;
-		let [deltaX, deltaY] = [a/90, b/90];
+		let [deltaX, deltaY] = [a/80, b/80];
 		var {x, y} = elData.figure.pos;
 		let [newX, newY] = [x+deltaX, y+deltaY];
 		this.processMoving(elData, {x: newX, y: newY});

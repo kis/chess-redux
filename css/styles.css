@@ -15,17 +15,17 @@
 	.letters-line {
 		display: block;
 		font-size: 0;
-		height: 90px;
+		height: 80px;
 	}
 
 	.letters-field {
 		display: inline-block;
 		vertical-align: top;
-		width: 90px;
-		height: 90px;
+		width: 80px;
+		height: 80px;
 		text-align: center;
 		font-size: 48px;
-		line-height: 90px;
+		line-height: 80px;
 		border: 1px solid transparent;
 
 		&.info {
@@ -36,16 +36,17 @@
 	.chess-line {
 		display: block;
 		font-size: 0;
-		height: 90px;
+		height: 80px;
 
 		.chess-field {
 			display: inline-block;
 			vertical-align: top;
-			line-height: 90px;
-			width: 90px;
-			height: 90px;
+			line-height: 80px;
+			width: 80px;
+			height: 80px;
 			font-size: 14px;
 			text-align: center;
+			box-sizing: border-box;
 			border: 1px solid #CEAD7C;
 			cursor: pointer;
 
@@ -56,18 +57,18 @@
 	}
 
 	.figure {
-		font-size: 72px;
+		font-size: 64px;
 	}
 }
 
 .chess-options {
-	position: absolute;
-	top: 5px;
-	left: 5px;
+	position: fixed;
+	top: 0px;
+	left: 0px;
 	width: 200px;
-	height: 190px;
+	height: 100vh;
 	background-color: #FFFCEA;
-	border: 2px solid #CEAD7C;
+	border-right: 2px solid #CEAD7C;
 
 	.moving-style {
 		text-align: center;

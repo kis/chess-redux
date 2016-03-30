@@ -30,13 +30,13 @@ export default class Options extends React.Component {
 
 		return (
 			<div className="chess-options">
-				<div className={movingStyle}>{figure} is moving</div>
 				<div className={startStyle}>
 					<button onClick={start}>Start</button>
 				</div>
 				<div className={endStyle}>
 					<button onClick={end}>End</button>
 				</div>
+				<div className={movingStyle}>{figure} is moving</div>
 			</div>
 		);
 	}

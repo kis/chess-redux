@@ -4,6 +4,14 @@ import * as actions from '../actions/actions';
 
 import Field from '../components/Logic/Field';
 
+import io from 'socket.io-client';
+
+var socket = io.connect('http://localhost:3001');
+
+socket.on('move', function (data) {
+    socket.emit('my other event', { my: 'data' });
+});
+
 var gameInit = {
   started: false
 };
@@ -11,13 +19,13 @@ var gameInit = {
 function options(state = gameInit, action) {
   switch (action.type) {
     case 'START_GAME':
-      return {...state, started: true};
+    return {...state, started: true};
 
     case 'END_GAME':
-      return {...state, started: false};
+    return {...state, started: false};
 
     default:
-      return {...state};
+    return {...state};
   }
 }
 
@@ -26,16 +34,16 @@ var fieldInit = new Field();
 function field(state = fieldInit, action) {
   switch (action.type) {
     case 'GET_FIELD':
-      return {...state};
+    return {...state};
 
     case 'MOVE_FIGURE_TO_CELL':
-      return {...state, data: action.field.data, black: !action.field.black};
+    return {...state, data: action.field.data, black: !action.field.black};
 
     case 'MOVE_FIGURE_BACK':
-      return {...state, data: action.oldField.data};
+    return {...state, data: action.oldField.data};
 
     default:
-      return {...state};
+    return {...state};
   }
 }
 
