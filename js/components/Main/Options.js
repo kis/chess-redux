@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Chat from './Chat';
+
 const FIGURES = {
 	black: 'Black',
 	white: 'White'
@@ -31,12 +33,14 @@ export default class Options extends React.Component {
 		return (
 			<div className="chess-options">
 				<div className={startStyle}>
-					<button onClick={start}>Start</button>
+					<button onClick={start}>Start game</button>
 				</div>
 				<div className={endStyle}>
-					<button onClick={end}>End</button>
+					<button onClick={end}>End game</button>
 				</div>
 				<div className={movingStyle}>{figure} is moving</div>
+
+				<Chat />
 			</div>
 		);
 	}
