@@ -2,9 +2,18 @@ import React from 'react';
 
 import FigureDraggable from './FigureDraggable';
 
+import Socket from './Socket';
+var socket = new Socket();
+
 export default class ChessField extends React.Component {
 	constructor(props) {
 		super(props);
+	}
+
+	componentDidMount() {
+		socket.getSocket().on('new move', (data) => {
+			this.props.actions.moveFigureToCell(data);
+		});
 	}
 
 	moveFigureToCell(oldPos, pos) {
@@ -16,7 +25,8 @@ export default class ChessField extends React.Component {
 		obj.data[oldPos.y][oldPos.x].figure = null;
 
 		setTimeout(() => {
-			this.props.actions.moveFigureToCell(objOld, obj);
+			this.props.actions.moveFigureToCell(obj);
+			socket.getSocket().emit('new move', obj);
 		});
 	}
 

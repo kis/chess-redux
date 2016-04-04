@@ -29,10 +29,9 @@ export function getField() {
   }
 }
 
-export function moveFigureToCell(oldField, field) {
+export function moveFigureToCell(field) {
   return {
     type: 'MOVE_FIGURE_TO_CELL',
-    oldField: oldField,
     field: field
   }
 }

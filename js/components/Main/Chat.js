@@ -1,12 +1,11 @@
 import React from 'react';
 
 import Socket from './Socket';
+var socket = new Socket();
 
 export default class Chat extends React.Component {
 	constructor(props) {
 		super(props);
-
-		this.socket = new Socket();
 	}
 
 	shouldComponentUpdate(nextProps, nextState) {
@@ -16,7 +15,7 @@ export default class Chat extends React.Component {
 	componentDidMount() {
 		document.getElementsByClassName('chat-input')[0].addEventListener('keyup', this.enterHandler.bind(this));
 
-		this.socket.getSocket().on('new message', (data) => {
+		socket.getSocket().on('new message', (data) => {
 			this.props.actions.sendMessage(data.msg);
 			this.scrollBottom();
 		});
@@ -35,7 +34,7 @@ export default class Chat extends React.Component {
 		if (e.keyCode === 13) {
 			var msg = e.target.value;
 			this.props.actions.sendMessage(msg);
-			this.socket.getSocket().emit('new message', {user: 'u1', msg: msg});
+			socket.getSocket().emit('new message', {user: 'u1', msg: msg});
 			e.target.value = null;
 			this.scrollBottom();
 		}

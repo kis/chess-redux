@@ -26,6 +26,12 @@ io.on('connection', function (socket) {
 		socket.broadcast.emit('new message', message);
 	});
 
+	socket.on('new move', function (move) {
+		console.log(move)
+
+		socket.broadcast.emit('new move', move);
+	});
+
 	socket.on('add user', function (username) {
 		// if (addedUser) return;
 
