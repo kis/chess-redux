@@ -1,8 +1,12 @@
 import React from 'react';
 
+import Socket from './Socket';
+
 export default class Chat extends React.Component {
 	constructor(props) {
 		super(props);
+
+		this.socket = new Socket();
 	}
 
 	shouldComponentUpdate(nextProps, nextState) {
@@ -11,18 +15,29 @@ export default class Chat extends React.Component {
 
 	componentDidMount() {
 		document.getElementsByClassName('chat-input')[0].addEventListener('keyup', this.enterHandler.bind(this));
+
+		this.socket.getSocket().on('new message', (data) => {
+			this.props.actions.sendMessage(data.msg);
+			this.scrollBottom();
+		});
 	}
 
 	componentWillUnMount() {
 		document.getElementsByClassName('chat-input')[0].removeEventListener('keyup', this.enterHandler.bind(this));
 	}
 
+	scrollBottom() {
+		var objDiv = document.getElementsByClassName("chat-message-box")[0];
+		objDiv.scrollTop = objDiv.scrollHeight;
+	}
+
 	enterHandler(e) {
 		if (e.keyCode === 13) {
-			this.props.actions.sendMessage(e.target.value);
+			var msg = e.target.value;
+			this.props.actions.sendMessage(msg);
+			this.socket.getSocket().emit('new message', {user: 'u1', msg: msg});
 			e.target.value = null;
-			var objDiv = document.getElementsByClassName("chat-message-box")[0];
-			objDiv.scrollTop = objDiv.scrollHeight;
+			this.scrollBottom();
 		}
 	}
 

@@ -18,10 +18,12 @@ var numUsers = 0;
 
 io.on('connection', function (socket) {
 
-	// console.log(socket, 'user connected')
+	console.log('next user connected')
 
-	socket.on('message', function (message) {
-		
+	socket.on('new message', function (message) {
+		console.log(message)
+
+		socket.broadcast.emit('new message', message);
 	});
 
 	socket.on('add user', function (username) {

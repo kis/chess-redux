@@ -4,14 +4,6 @@ import * as actions from '../actions/actions';
 
 import Field from '../components/Logic/Field';
 
-import io from 'socket.io-client';
-
-var socket = io.connect('http://localhost:3001');
-
-socket.on('move', function (data) {
-    socket.emit('my other event', { my: 'data' });
-});
-
 var gameInit = {
   started: false,
   messages: []
