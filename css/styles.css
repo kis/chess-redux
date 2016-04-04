@@ -118,6 +118,29 @@
 			background-color: white;
 			border-top: 2px solid rgb(206, 173, 124);
 			border-bottom: 2px solid rgb(206, 173, 124);
+			overflow-y: auto;
+			box-sizing: border-box;
+			padding: 15px;
+
+			.chat-msg-item {
+				padding: 10px;
+				max-width: 130px;
+				clear: both;
+
+				.msg-user {
+					color: #2196F3;
+				}
+
+				.msg {
+					display: inline-block;
+					background-color: rgba(33, 150, 243, 0.22);
+					max-width: 130px;
+					color: brown;
+					padding: 6px;
+					margin-top: 5px;
+    				border-radius: 10px;
+				}
+			}
 		}
 
 		.chat-input {

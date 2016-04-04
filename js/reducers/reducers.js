@@ -27,7 +27,7 @@ function options(state = gameInit, action) {
 
     case 'SEND_MESSAGE':
     console.log(state.messages, action.message)
-    return {...state, messages: [...state.messages, action.message]};
+    return {...state, messages: [...state.messages, {user: 'u1', msg: action.message}]};
 
     default:
     return {...state};

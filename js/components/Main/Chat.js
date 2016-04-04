@@ -21,18 +21,27 @@ export default class Chat extends React.Component {
 		if (e.keyCode === 13) {
 			this.props.actions.sendMessage(e.target.value);
 			e.target.value = null;
+			var objDiv = document.getElementsByClassName("chat-message-box")[0];
+			objDiv.scrollTop = objDiv.scrollHeight;
 		}
 	}
 
 	render() {
 		return ( 
 			<div className='chat'>
-				<div className='chat-message-box'></div>
+				<div className='chat-message-box'>
+					{this.props.messages.map((result, i) => {
+						return <div className='chat-msg-item' key={i}>
+							<div className='msg-user'>{result.user.toUpperCase()}</div>
+							<span className='msg'>{result.msg}</span>
+						</div>;
+					})}
+				</div>
 				<input className='chat-input' 
 					   type='text' 
 					   name='message' 
 					   placeholder='Write message...' />
 			</div>
-			);
+		);
 	}
 }
