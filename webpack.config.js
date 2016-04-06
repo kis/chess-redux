@@ -4,17 +4,20 @@ var webpack = require('webpack');
 var autoprefixer = require('autoprefixer');
 var precss       = require('precss');
 
+var appContext = path.join(__dirname, '/');
+
 module.exports = {
+  context: appContext,
   entry: [
     // 'webpack-dev-server/client?http://localhost:3000',
     './js/index'
   ],
   devtool: 'eval',
   output: {
-    path: __dirname,
+    path: path.resolve(__dirname, './dist'),
     filename: 'bundle.js',
-    publicPath: "http://localhost:8080/static/"
-    // publicPath: '/static/'
+    publicPath: "http://localhost:3001/"
+    // publicPath: '/'
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin()
