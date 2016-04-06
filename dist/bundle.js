@@ -54,7 +54,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "3830a6ac7dcca90949c9"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "66847021c41f0957cdc0"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -2192,7 +2192,7 @@
 /* 274 */
 /***/ function(module, exports, __webpack_require__) {
 
-	eval("'use strict';\n\nvar _createClass = __webpack_require__(234)['default'];\n\nvar _classCallCheck = __webpack_require__(237)['default'];\n\nvar _interopRequireDefault = __webpack_require__(2)['default'];\n\nObject.defineProperty(exports, '__esModule', {\n\tvalue: true\n});\n\nvar _socketIoClient = __webpack_require__(275);\n\nvar _socketIoClient2 = _interopRequireDefault(_socketIoClient);\n\nvar Socket = (function () {\n\tfunction Socket() {\n\t\t_classCallCheck(this, Socket);\n\n\t\tthis.socket = _socketIoClient2['default'].connect('http://localhost:3001');\n\t}\n\n\t_createClass(Socket, [{\n\t\tkey: 'getSocket',\n\t\tvalue: function getSocket() {\n\t\t\tif (!this.socket) {\n\t\t\t\tthis.socket = _socketIoClient2['default'].connect('http://localhost:3001');\n\t\t\t}\n\t\t\treturn this.socket;\n\t\t}\n\t}]);\n\n\treturn Socket;\n})();\n\nexports['default'] = Socket;\nmodule.exports = exports['default'];\n\n/*****************\n ** WEBPACK FOOTER\n ** ./js/components/Main/Socket.js\n ** module id = 274\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./js/components/Main/Socket.js?");
+	eval("'use strict';\n\nvar _createClass = __webpack_require__(234)['default'];\n\nvar _classCallCheck = __webpack_require__(237)['default'];\n\nvar _interopRequireDefault = __webpack_require__(2)['default'];\n\nObject.defineProperty(exports, '__esModule', {\n\tvalue: true\n});\n\nvar _socketIoClient = __webpack_require__(275);\n\nvar _socketIoClient2 = _interopRequireDefault(_socketIoClient);\n\nvar Socket = (function () {\n\tfunction Socket() {\n\t\t_classCallCheck(this, Socket);\n\n\t\tthis.host = window.location.hostname.indexOf('localhost') !== -1 ? 'http://localhost:8080' : 'https://evening-basin-88080.herokuapp.com';\n\n\t\tthis.socket = _socketIoClient2['default'].connect(this.host);\n\t}\n\n\t_createClass(Socket, [{\n\t\tkey: 'getSocket',\n\t\tvalue: function getSocket() {\n\t\t\tif (!this.socket) {\n\t\t\t\tthis.socket = _socketIoClient2['default'].connect(this.host);\n\t\t\t}\n\t\t\treturn this.socket;\n\t\t}\n\t}]);\n\n\treturn Socket;\n})();\n\nexports['default'] = Socket;\nmodule.exports = exports['default'];\n\n/*****************\n ** WEBPACK FOOTER\n ** ./js/components/Main/Socket.js\n ** module id = 274\n ** module chunks = 0\n **/\n//# sourceURL=webpack:///./js/components/Main/Socket.js?");
 
 /***/ },
 /* 275 */
