@@ -22,13 +22,10 @@ io.on('connection', function (socket) {
 
 	socket.on('new message', function (data) {
 		io.sockets.emit('new message', data);
-		// socket.broadcast.emit('new message', message);
 	});
 
 	socket.on('new move', function (move) {
-		console.log(move)
-
-		socket.emit('new move', move);
+		io.sockets.emit('new move', move);
 	});
 
 	socket.on('add user', function (username) {

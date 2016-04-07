@@ -18,11 +18,18 @@ function getSocket() {
 }
 
 getSocket().on('new message', (data) => {
-	store.dispatch({type: 'SEND_MESSAGE', user: data.user, message: data.msg});
+	store.dispatch({
+		type: 'SEND_MESSAGE', 
+		user: data.user, 
+		message: data.msg
+	});
 });
 
 getSocket().on('new move', (data) => {
-	actions.moveFigureToCell(data);
+	store.dispatch({
+	    type: 'MOVE_FIGURE_TO_CELL',
+	    field: data
+	});
 });
 
 export function newMessage(user, message) {
