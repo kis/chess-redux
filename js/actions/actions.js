@@ -12,9 +12,10 @@ export function endGame() {
   }
 }
 
-export function sendMessage(message) {
+export function sendMessage(user, message) {
   return {
     type: 'SEND_MESSAGE',
+    user: user,
     message: message
   }
 }

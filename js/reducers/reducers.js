@@ -34,7 +34,7 @@ function options(state = game, action) {
     case 'SEND_MESSAGE':
     var rooms = state.rooms.map((el, i, arr) => {
       return el.id == state.roomId ? 
-            {...el, messages: [...el.messages, {user: state.userName, msg: action.message}]} : 
+            {...el, messages: [...el.messages, {user: action.user, msg: action.message}]} : 
             el;
     });
     return {...state, rooms: rooms};

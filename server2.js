@@ -20,8 +20,8 @@ io.on('connection', function (socket) {
 
 	console.log('next user connected')
 
-	socket.on('new message', function (message) {
-		io.sockets.emit('new message', message);
+	socket.on('new message', function (data) {
+		io.sockets.emit('new message', data);
 		// socket.broadcast.emit('new message', message);
 	});
 

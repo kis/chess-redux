@@ -18,16 +18,15 @@ function getSocket() {
 }
 
 getSocket().on('new message', (data) => {
-	console.log('new message', data);
-	store.dispatch({type: 'SEND_MESSAGE', message: data.msg});
+	store.dispatch({type: 'SEND_MESSAGE', user: data.user, message: data.msg});
 });
 
 getSocket().on('new move', (data) => {
 	actions.moveFigureToCell(data);
 });
 
-export function newMessage(message) {
-	getSocket().emit('new message', {msg: message});
+export function newMessage(user, message) {
+	getSocket().emit('new message', {user: user, msg: message});
 }
 
 export function newMove(obj) {

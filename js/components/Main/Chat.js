@@ -22,7 +22,7 @@ export default class Chat extends React.Component {
 		if (e.keyCode === 13) {
 			var msg = e.target.value;
 			if (msg) {
-				api.newMessage(msg);
+				api.newMessage(this.props.options.userName, msg);
 				e.target.value = null;
 				this.scrollBottom();
 			}
@@ -38,6 +38,10 @@ export default class Chat extends React.Component {
 			return el.id == this.props.options.roomId;
 		}) : null;
 
+		var messageToRight = (result) => {
+			return (result.user !== this.props.options.userName) ? 'chat-msg-item to-right' : 'chat-msg-item';
+		};
+
 		return ( 
 			<div className='chat'>
 				<div className='rooms-box'>
@@ -46,8 +50,8 @@ export default class Chat extends React.Component {
 					})}
 				</div>
 				<div className='chat-message-box'>
-					{room ? room.messages.map((result, i) => {
-						return <div className='chat-msg-item' key={i}>
+					{room ? room.messages.map((result, i, arr) => {
+						return <div className={messageToRight(result)} key={i}>
 							{result.user ? <div className='msg-user'>{result.user.toUpperCase()}</div> : null}
 							<span className='msg'>{result.msg}</span>
 						</div>;
