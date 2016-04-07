@@ -4,22 +4,40 @@ import * as actions from '../actions/actions';
 
 import Field from '../components/Logic/Field';
 
-var gameInit = {
+var game = {
   started: false,
-  messages: []
+  userName: null,
+  roomId: null,
+  roomTitle: null,
+  rooms: []
 };
 
-function options(state = gameInit, action) {
+function options(state = game, action) {
   switch (action.type) {
     case 'START_GAME':
-    return {...state, started: true};
+    var roomId = Math.random()* (99 - 1) + 1;
+    var rooms = [...state.rooms, {
+      id: roomId,
+      title: action.roomTitle,
+      messages: [{msg: action.userName + " is connected"}]
+    }];
+    return {...state, started: true, 
+                      userName: action.userName,
+                      roomId: roomId,  
+                      roomTitle: action.roomTitle,
+                      rooms: rooms 
+                    };
 
     case 'END_GAME':
     return {...state, started: false};
 
     case 'SEND_MESSAGE':
-    console.log(state.messages, action.message)
-    return {...state, messages: [...state.messages, {user: 'u1', msg: action.message}]};
+    var rooms = state.rooms.map((el, i, arr) => {
+      return el.id == state.roomId ? 
+            {...el, messages: [...el.messages, {user: state.userName, msg: action.message}]} : 
+            el;
+    });
+    return {...state, rooms: rooms};
 
     default:
     return {...state};

@@ -1,7 +1,6 @@
 import React from 'react';
 
-import Socket from './Socket';
-var socket = new Socket();
+import * as api from '../../api/api'; 
 
 export default class Chat extends React.Component {
 	constructor(props) {
@@ -12,46 +11,50 @@ export default class Chat extends React.Component {
 		return true;
 	}
 
-	componentDidMount() {
-		document.getElementsByClassName('chat-input')[0].addEventListener('keyup', this.enterHandler.bind(this));
-
-		socket.getSocket().on('new message', (data) => {
-			this.props.actions.sendMessage(data.msg);
-			this.scrollBottom();
-		});
-	}
-
-	componentWillUnMount() {
-		document.getElementsByClassName('chat-input')[0].removeEventListener('keyup', this.enterHandler.bind(this));
-	}
-
 	scrollBottom() {
 		var objDiv = document.getElementsByClassName("chat-message-box")[0];
-		objDiv.scrollTop = objDiv.scrollHeight;
+		if (objDiv) {
+			objDiv.scrollTop = objDiv.scrollHeight;
+		}
 	}
 
 	enterHandler(e) {
 		if (e.keyCode === 13) {
 			var msg = e.target.value;
-			this.props.actions.sendMessage(msg);
-			socket.getSocket().emit('new message', {user: 'u1', msg: msg});
-			e.target.value = null;
-			this.scrollBottom();
+			if (msg) {
+				api.newMessage(msg);
+				e.target.value = null;
+				this.scrollBottom();
+			}
 		}
 	}
 
+	componentDidUpdate() {
+		this.scrollBottom();
+	}
+
 	render() {
+		var room = this.props.options.rooms ? this.props.options.rooms.find((el, i, arr) => {
+			return el.id == this.props.options.roomId;
+		}) : null;
+
 		return ( 
 			<div className='chat'>
-				<div className='chat-message-box'>
-					{this.props.messages.map((result, i) => {
-						return <div className='chat-msg-item' key={i}>
-							<div className='msg-user'>{result.user.toUpperCase()}</div>
-							<span className='msg'>{result.msg}</span>
-						</div>;
+				<div className='rooms-box'>
+					{this.props.options.rooms.map((room, i) => {
+						return <span key={i}>#{room.title}</span>;
 					})}
 				</div>
+				<div className='chat-message-box'>
+					{room ? room.messages.map((result, i) => {
+						return <div className='chat-msg-item' key={i}>
+							{result.user ? <div className='msg-user'>{result.user.toUpperCase()}</div> : null}
+							<span className='msg'>{result.msg}</span>
+						</div>;
+					}) : null}
+				</div>
 				<input className='chat-input' 
+					   onKeyUp={this.enterHandler.bind(this)}
 					   type='text' 
 					   name='message' 
 					   placeholder='Write message...' />

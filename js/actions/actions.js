@@ -1,6 +1,8 @@
-export function startGame() {
+export function startGame(userName, roomTitle) {
   return {
-    type: 'START_GAME'
+    type: 'START_GAME',
+    userName: userName,
+    roomTitle: roomTitle
   }
 }
 
@@ -10,7 +12,7 @@ export function endGame() {
   }
 }
 
-export function sendMessage(message, messages) {
+export function sendMessage(message) {
   return {
     type: 'SEND_MESSAGE',
     message: message

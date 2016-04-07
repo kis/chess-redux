@@ -21,15 +21,14 @@ io.on('connection', function (socket) {
 	console.log('next user connected')
 
 	socket.on('new message', function (message) {
-		console.log(message)
-
-		socket.broadcast.emit('new message', message);
+		io.sockets.emit('new message', message);
+		// socket.broadcast.emit('new message', message);
 	});
 
 	socket.on('new move', function (move) {
 		console.log(move)
 
-		socket.broadcast.emit('new move', move);
+		socket.emit('new move', move);
 	});
 
 	socket.on('add user', function (username) {

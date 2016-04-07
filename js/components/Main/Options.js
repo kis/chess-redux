@@ -17,7 +17,11 @@ export default class Options extends React.Component {
 	}
 
 	start() {
-		this.props.actions.startGame();
+		var name = document.getElementById('user-name').value;
+		var room = document.getElementById('room').value;
+		if (name && room) {
+			this.props.actions.startGame(name, room);
+		}
 	}
 
 	end() {
@@ -37,6 +41,8 @@ export default class Options extends React.Component {
 		return (
 			<div className="chess-options">
 				<div className={startStyle}>
+					<input className="input-style" id="user-name" type="text" placeholder="Your Name" /><br/><br/>
+					<input className="input-style" id="room" type="text" placeholder="Room" /><br/><br/>
 					<button onClick={start}>Start game</button>
 				</div>
 				<div className={endStyle}>
@@ -44,7 +50,7 @@ export default class Options extends React.Component {
 				</div>
 				<div className={movingStyle}>{figure} is moving</div>
 
-				<Chat messages={this.props.options.messages} actions={this.props.actions} />
+				<Chat options={this.props.options} actions={this.props.actions} />
 			</div>
 		);
 	}

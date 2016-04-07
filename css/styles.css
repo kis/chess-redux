@@ -70,6 +70,11 @@
 	background-color: #FFFCEA;
 	border-right: 2px solid #CEAD7C;
 
+	.input-style {
+		height: 30px;
+		outline: none;
+	}
+
 	.moving-style {
 		text-align: center;
 		padding: 20px;
@@ -110,6 +115,13 @@
 		margin-top: 50px;
 		bottom: 0px;
 		box-sizing: border-box;
+
+		.rooms-box {
+			span {
+				padding: 10px;
+				color: #2196F3;
+			}
+		}
 
 		.chat-message-box {
 			position: relative;
