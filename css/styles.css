@@ -162,6 +162,7 @@
 					padding: 6px;
 					margin-top: 5px;
     				border-radius: 10px;
+    				word-wrap: break-word;
 				}
 			}
 		}
