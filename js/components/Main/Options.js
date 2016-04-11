@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Chat from './Chat';
+import { Router, Route, IndexRoute, Link, IndexLink, browserHistory } from 'react-router';
 
 const FIGURES = {
 	black: 'Black',
@@ -40,6 +40,11 @@ export default class Options extends React.Component {
 
 		return (
 			<div className="chess-options">
+				<ul>
+					<li><Link to="/chat" activeStyle={{ color: 'red' }}>Chat</Link></li>
+					<li><Link to="/chess" activeStyle={{ color: 'red' }}>Chess</Link></li>
+				</ul>
+
 				<div className={startStyle}>
 					<input className="input-style" id="user-name" type="text" placeholder="Your Name" /><br/><br/>
 					<input className="input-style" id="room" type="text" placeholder="Room" /><br/><br/>
@@ -49,8 +54,6 @@ export default class Options extends React.Component {
 					<button onClick={end}>End game</button>
 				</div>
 				<div className={movingStyle}>{figure} is moving</div>
-
-				<Chat options={this.props.options} actions={this.props.actions} />
 			</div>
 		);
 	}

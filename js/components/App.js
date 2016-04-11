@@ -5,6 +5,7 @@ import * as actions from '../actions/actions';
 
 import ChessField from '../components/Main/ChessField';
 import Options from '../components/Main/Options';
+import Chat from '../components/Main/Chat';
 
 class App extends Component {
   render() {
@@ -14,6 +15,7 @@ class App extends Component {
       <div>
         <ChessField field={this.props.field} options={this.props.options} actions={this.props.actions} />
         <Options field={this.props.field} options={this.props.options} actions={this.props.actions} />
+        <Chat options={this.props.options} actions={this.props.actions} />
       </div>
     )
   }

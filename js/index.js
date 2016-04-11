@@ -6,10 +6,31 @@ import '../css/styles.css';
 
 import store from './store/store';
 
-import App from './components/App';
+import { Router, Route, IndexRoute, Link, IndexLink, browserHistory } from 'react-router';
 
-ReactDOM.render(<Provider store={store}>
-    <App />
-  </Provider>,
-  document.getElementsByClassName('root')[0]);
+import App from './components/App';
+import Chat from './components/Main/Chat';
+import ChessField from './components/Main/ChessField';
+
+const routes = {
+  path: '/',
+  component: App,
+  indexRoute: { component: ChessField },
+  childRoutes: [
+    { 
+    	path: 'chess', 
+    	component: ChessField 
+    },
+    {
+    	path: 'chat',
+      	component: Chat
+    }
+  ]
+};
+
+ReactDOM.render((
+	<Provider store={store}>	
+	  <Router routes={routes} history={browserHistory} />
+ 	</Provider>
+), document.getElementsByClassName('root')[0]);
 
