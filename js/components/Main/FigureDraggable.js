@@ -21,7 +21,8 @@ export default class FigureDraggable extends React.Component {
 
 	getMoveStatus(elData, pos) {
 	    var currentField = this.props.field.data[pos.y][pos.x];
-	    var isValidMove = elData.figure.isValidMove(pos);
+	    var figureClone = this.props.field.initCtrl.getFigureByPosition(elData.figure.initPos);
+	    var isValidMove = figureClone.isValidMove(pos);
 	    var oursFigure = currentField.figure ? elData.figure.isBlack == currentField.figure.isBlack : null;
 
 	    if (!currentField.figure) {
@@ -51,7 +52,8 @@ export default class FigureDraggable extends React.Component {
 		if (!isValidMove || !this.props.options.started || elData.figure.isBlack !== this.props.field.black) {
 			this.props.moveFigureBack(oldPos);
 		} else {
-			elData.figure.move(pos);
+			var figureClone = this.props.field.initCtrl.getFigureByPosition(elData.figure.initPos);
+			figureClone.move(pos);
 			this.props.moveFigureToCell(oldPos, pos);
 		}
 	}
