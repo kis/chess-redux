@@ -1,6 +1,6 @@
 .chat {
 	position: fixed;
-	left: 400px;
+	left: 302px;
 	width: 950px;
 	height: 450px;
 	box-sizing: border-box;
@@ -19,7 +19,7 @@
 		position: relative;
 		width: 100%;
 		height: 350px;
-		background-color: white;
+		background-color: beige;
 		border-top: 2px solid rgb(206, 173, 124);
 		border-bottom: 2px solid rgb(206, 173, 124);
 		overflow-y: auto;
@@ -28,7 +28,7 @@
 
 		.chat-msg-item {
 			padding: 10px;
-			max-width: 130px;
+			max-width: 50%;
 			clear: both;
 			overflow-x: hidden;
 
@@ -38,6 +38,9 @@
 
 			&.to-right {
 				float: right;
+				.msg-user {
+					text-align: right;
+				}
 				.msg {
 					float: right;
 				}
@@ -46,7 +49,7 @@
 			.msg {
 				display: inline-block;
 				background-color: rgba(33, 150, 243, 0.22);
-				max-width: 130px;
+				max-width: 100%;
 				color: brown;
 				padding: 6px;
 				margin-top: 5px;
@@ -61,7 +64,7 @@
 		border: 0px;
 		width: 100%;
 		height: 50px;
-		background-color: white;
+		background-color: ghostwhite;
 		color: rgb(206, 173, 124);
 		outline: none;
 		font-size: 30px;

@@ -7,9 +7,32 @@
 	background-color: #FFFCEA;
 	border-right: 2px solid #CEAD7C;
 
+	.tabs {
+		display: table;
+		width: 300px;
+		a {
+			display: table-cell;
+    		padding: 20px 50px;
+			text-decoration: none;
+			cursor: pointer;
+			background: #EAE6D5;
+			color: #B37A26;
+
+			&.tab-active {
+				background: #EAE7B3;
+			}
+
+			&:hover {
+				background: #EAE7B3;
+			}
+		}
+	}
+
 	.input-style {
-		height: 30px;
+		height: 40px;
 		outline: none;
+		background: beige;
+    	border: 0px;
 	}
 
 	.moving-style {
@@ -28,10 +51,10 @@
 
 		button {
 			text-align: center;
-			padding: 10px;
-			background-color: white;
+			padding: 18px;
+			background-color: #E6E1A7;
 			color: #7D4B00;
-			border: 2px solid #CEAD7C;
+			border: 0px;
 			outline: none;
 
 			&:hover {

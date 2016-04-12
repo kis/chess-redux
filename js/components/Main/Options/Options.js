@@ -41,10 +41,10 @@ export default class Options extends React.Component {
 
 		return (
 			<div className="chess-options">
-				<ul>
-					<li><Link to="/chat" activeStyle={{ color: 'red' }}>Chat</Link></li>
-					<li><Link to="/chess" activeStyle={{ color: 'red' }}>Chess</Link></li>
-				</ul>
+				<div className="tabs">
+					<Link to="/chess" activeClassName="tab-active">Chess</Link>
+					<Link to="/chat" activeClassName="tab-active">Chat</Link>
+				</div>
 
 				<div className={startStyle}>
 					<input className="input-style" id="user-name" type="text" placeholder="Your Name" /><br/><br/>
