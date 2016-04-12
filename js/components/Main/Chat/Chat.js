@@ -12,6 +12,14 @@ class Chat extends React.Component {
 		super(props);
 	}
 
+	componentDidMount() {
+		this.scrollBottom();
+	}
+
+	componentDidUpdate() {
+		this.scrollBottom();
+	}
+
 	shouldComponentUpdate(nextProps, nextState) {
 		return true;
 	}
@@ -32,10 +40,6 @@ class Chat extends React.Component {
 				this.scrollBottom();
 			}
 		}
-	}
-
-	componentDidUpdate() {
-		this.scrollBottom();
 	}
 
 	render() {
