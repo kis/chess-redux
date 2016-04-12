@@ -1,10 +1,15 @@
 import React from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import * as actions from '../../../actions/actions';
 
 import FigureDraggable from './FigureDraggable';
 
-import * as api from '../../api/api';
+import * as api from '../../../api/api';
 
-export default class ChessField extends React.Component {
+import './chessfield.css';
+
+class ChessField extends React.Component {
 	constructor(props) {
 		super(props);
 	}
@@ -91,3 +96,12 @@ export default class ChessField extends React.Component {
 		);
 	}
 }
+
+const mapStateToProps = (state) => ({
+  options: state.options,
+  field: state.field
+});
+
+const mapDispatchToProps = (dispatch) => ({actions: bindActionCreators(actions, dispatch)});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ChessField);

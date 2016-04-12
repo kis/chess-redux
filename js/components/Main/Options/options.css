@@ -1,0 +1,48 @@
+.chess-options {
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	width: 300px;
+	height: 100vh;
+	background-color: #FFFCEA;
+	border-right: 2px solid #CEAD7C;
+
+	.input-style {
+		height: 30px;
+		outline: none;
+	}
+
+	.moving-style {
+		text-align: center;
+		padding: 20px;
+		color: #7D4B00;
+
+		&.hidden {
+			visibility: hidden;
+		}
+	}
+
+	.button-style {
+		text-align: center;
+		padding: 10px;
+
+		button {
+			text-align: center;
+			padding: 10px;
+			background-color: white;
+			color: #7D4B00;
+			border: 2px solid #CEAD7C;
+			outline: none;
+
+			&:hover {
+				cursor: pointer;
+				background-color: #CEAD7C;
+			}
+		}
+
+		&.hidden {
+			display: none;
+		}
+	}
+
+}

@@ -1,6 +1,7 @@
 import React from 'react';
-
 import { Router, Route, IndexRoute, Link, IndexLink, browserHistory } from 'react-router';
+
+import './options.css';
 
 const FIGURES = {
 	black: 'Black',

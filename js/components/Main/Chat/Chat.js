@@ -1,8 +1,13 @@
 import React from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import * as actions from '../../../actions/actions';
 
-import * as api from '../../api/api'; 
+import * as api from '../../../api/api'; 
 
-export default class Chat extends React.Component {
+import './chat.css';
+
+class Chat extends React.Component {
 	constructor(props) {
 		super(props);
 	}
@@ -66,3 +71,11 @@ export default class Chat extends React.Component {
 		);
 	}
 }
+
+const mapStateToProps = (state) => ({
+  options: state.options
+});
+
+const mapDispatchToProps = (dispatch) => ({actions: bindActionCreators(actions, dispatch)});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Chat);
